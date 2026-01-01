@@ -1,0 +1,164 @@
+/* Cor de fundo do corpo */
+body {
+    background-color: #b0c4de;  /* Cor azul claro/cinza */
+    font-family: Arial, sans-serif;
+    margin: 0;
+}
+
+/* Títulos */
+h1 {
+    color: #333333;
+}
+
+/* Estilos do menu lateral */
+#menu {
+    width: 220px;
+    background-color: #2c3e50;
+    color: white;
+    padding: 20px;
+    box-sizing: border-box;
+    position: fixed;
+    left: -220px;  /* Menu oculto por padrão */
+    top: 0;
+    bottom: 0;
+    transition: left 0.3s ease;
+}
+
+#menu.open {
+    left: 0;  /* Menu visível */
+}
+
+/* Menu items */
+#menu h2 {
+    margin-top: 0;
+}
+
+#menu ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+#menu ul li {
+    margin: 15px 0;
+    cursor: pointer;
+}
+
+#menu ul li:hover {
+    background-color: #34495e;
+    padding-left: 10px;
+    transition: 0.3s;
+}
+
+/* Botão de logout */
+#btn-logout {
+    margin-top: 40px;
+    padding: 10px;
+    width: 100%;
+    background-color: #c0392b;
+    border: none;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#btn-logout:hover {
+    background-color: #e74c3c;
+}
+
+/* Ícone do menu (☰) */
+.menu-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    background-color: #2c3e50;
+    color: white;
+    cursor: pointer;
+    position: fixed;
+    left: 20px;
+    top: 20px;
+    border-radius: 50%;
+    z-index: 1000;
+}
+
+/* Esconde o ícone quando o menu está aberto */
+.menu-toggle.hidden {
+    display: none;
+}
+
+/* Área principal */
+#conteudo {
+    flex-grow: 1;
+    padding: 30px;
+    box-sizing: border-box;
+    background-color: #b0c4de;  /* Cor azul claro / cinza */
+    overflow-y: auto;
+    transition: margin-left 0.3s ease;
+    margin-left: 0;
+}
+
+#conteudo.open {
+    margin-left: 220px;  /* Quando o menu lateral está visível */
+}
+
+/* Notificação Completar Cadastro */
+.completar-cadastro-notificacao {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;  /* Largura maior */
+    height: 50px;  /* Menor em altura */
+    background-color: rgba(243, 156, 18, 0.8); /* Cor laranja com transparência */
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    z-index: 1000;
+}
+
+.completar-cadastro-conteudo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.completar-cadastro-notificacao p {
+    font-size: 1rem;  /* Letra menor */
+    margin: 0;
+}
+
+.completar-cadastro-notificacao button {
+    background-color: #e74c3c;
+    border: none;
+    color: white;
+    padding: 5px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.completar-cadastro-notificacao button:hover {
+    background-color: #c0392b;
+}
+
+/* Navegação */
+nav {
+    margin-bottom: 20px;
+}
+
+nav a {
+    color: #0066cc;
+    text-decoration: none;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* Botões gerais */
+button {
+    margin-right: 10px;
+}

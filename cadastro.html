@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro - Condomínio</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #ecf0f1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .cadastro-container {
+            background-color: white;
+            padding: 40px 50px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            width: 400px;
+        }
+
+        .cadastro-container h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #2c3e50;
+        }
+
+        .cadastro-container label {
+            display: block;
+            margin-bottom: 5px;
+            color: #34495e;
+            font-weight: bold;
+        }
+
+        .cadastro-container input[type="text"],
+        .cadastro-container input[type="email"],
+        .cadastro-container input[type="password"],
+        .cadastro-container select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #bdc3c7;
+            box-sizing: border-box;
+        }
+
+        .cadastro-container input:focus,
+        .cadastro-container select:focus {
+            border-color: #2980b9;
+            outline: none;
+        }
+
+        .cadastro-container button {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            color: white;
+            background-color: #2980b9;
+            transition: background-color 0.3s;
+        }
+
+        .cadastro-container button:hover {
+            background-color: #3498db;
+        }
+
+        .cadastro-container .btn-voltar {
+            background-color: #7f8c8d;
+        }
+
+        .cadastro-container .btn-voltar:hover {
+            background-color: #95a5a6;
+        }
+    </style>
+</head>
+<body>
+
+<div class="cadastro-container">
+    <h1>Cadastro de Usuário</h1>
+
+    <form>
+        <label>Nome Completo:</label>
+        <input type="text" name="nome" required>
+
+        <label>Email:</label>
+        <input type="email" name="email" required>
+
+        <label>Senha:</label>
+        <input type="password" name="senha" id="senha" required>
+
+        <label>Repita a Senha:</label>
+        <input type="password" name="senha2" id="senha2" required>
+
+
+        <label for="apartamento">Selecionar Apartamento:</label>
+        <select id="apartamento" name="apartamento" required>
+            <option value="">-- Selecione seu Apartamento --</option>
+            <option value="101">Apartamento 101</option>
+            <option value="102">Apartamento 102</option>
+            <option value="103">Apartamento 103</option>
+            <option value="104">Apartamento 104</option>
+        </select>
+
+        <button type="submit">Cadastrar</button>
+        <button type="button" class="btn-voltar" onclick="window.location.href='login.html'">Voltar</button>
+    </form>
+</div>
+
+<script src="js/script.js"></script>
+</body>
+</html>

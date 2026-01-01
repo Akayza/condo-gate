@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Gerenciar Usuários</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #ecf0f1;
+        }
+
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 15px 30px;
+        }
+
+        main {
+            padding: 30px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        h1, h2 {
+            color: #2c3e50;
+        }
+
+        .box {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+        }
+
+        .filtros {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        select, input {
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            min-width: 200px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li.usuario {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            cursor: pointer;
+        }
+
+        li.usuario:hover {
+            background-color: #f2f2f2;
+        }
+
+        button {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        .btn-editar { background: #2980b9; color: white; }
+        .btn-excluir { background: #c0392b; color: white; }
+        .btn-transferir { background: #16a085; color: white; }
+        .btn-voltar { background: #7f8c8d; color: white; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h2>Gerenciamento de Usuários</h2>
+</header>
+
+<main>
+
+    <!-- 🔍 FILTROS -->
+    <div class="box">
+        <h2>Filtros</h2>
+
+        <div class="filtros">
+            <select id="filtro-cargo">
+                <option value="">Cargo</option>
+                <option>Morador</option>
+                <option>Porteiro</option>
+                <option>Síndico</option>
+                <option>Administradora</option>
+            </select>
+
+            <select id="filtro-apartamento">
+                <option value="">Apartamento</option>
+                <option>101</option>
+                <option>102</option>
+                <option>103</option>
+            </select>
+
+            <input type="text" placeholder="Nome ou Apartamento">
+        </div>
+    </div>
+
+    <!-- 📋 LISTA DE USUÁRIOS -->
+    <div class="box">
+        <h2>Usuários</h2>
+
+        <ul id="lista-usuarios">
+            <li class="usuario">
+                Guilherme Freitas — Morador — Apto 101 (Responsável)
+            </li>
+            <li class="usuario">
+                Maria Silva — Moradora — Apto 101
+            </li>
+            <li class="usuario">
+                João Santos — Porteiro
+            </li>
+        </ul>
+    </div>
+
+    <!-- ⚙️ PAINEL DE AÇÕES (INICIALMENTE OCULTO) -->
+    <div class="box" id="painel-acoes" style="display:none;">
+        <h2>Gerenciar Usuário</h2>
+
+        <p><strong>Nome:</strong> Guilherme Freitas</p>
+        <p><strong>Cargo:</strong> Morador</p>
+        <p><strong>Apartamento:</strong> 101</p>
+
+        <h3>Ações Disponíveis</h3>
+
+        <button class="btn-editar">Editar Dados</button>
+        <button class="btn-transferir">Transferir Responsável</button>
+        <button class="btn-excluir">Excluir Usuário</button>
+    </div>
+
+    <button class="btn-voltar" onclick="window.location.href='index.html'">
+        Voltar ao Painel
+    </button>
+
+</main>
+
+<script src="js/script.js"></script>
+</body>
+</html>

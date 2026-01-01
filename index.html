@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel do Condomínio</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            height: 100vh;
+            transition: all 0.3s ease;
+        }
+
+        /* Menu lateral */
+        #menu {
+            width: 220px;
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            box-sizing: border-box;
+            position: fixed;
+            left: -220px;  /* Menu oculto por padrão */
+            top: 0;
+            bottom: 0;
+            transition: left 0.3s ease;
+        }
+
+        #menu.open {
+            left: 0;  /* Menu visível */
+        }
+
+        #menu h2 {
+            margin-top: 0;
+        }
+
+        #menu ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        #menu ul li {
+            margin: 15px 0;
+            cursor: pointer;
+        }
+
+        #menu ul li:hover {
+            background-color: #34495e;
+            padding-left: 10px;
+            transition: 0.3s;
+        }
+
+        #btn-logout {
+            margin-top: 40px;
+            padding: 10px;
+            width: 100%;
+            background-color: #c0392b;
+            border: none;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        #btn-logout:hover {
+            background-color: #e74c3c;
+        }
+
+        /* Ícone do menu (☰) */
+        .menu-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            background-color: #2c3e50;
+            color: white;
+            cursor: pointer;
+            position: fixed;
+            left: 20px;
+            top: 20px;
+            border-radius: 50%;
+            z-index: 1000;
+        }
+
+        .menu-toggle.hidden {
+            display: none;  /* Esconde o ícone quando o menu está aberto */
+        }
+
+        /* Área principal */
+        #conteudo {
+            flex-grow: 1;
+            padding: 30px;
+            box-sizing: border-box;
+            background-color: #b0c4de;  /* Cor azul claro / cinza */
+            overflow-y: auto;
+            transition: margin-left 0.3s ease;
+            margin-left: 0;
+        }
+
+        #conteudo.open {
+            margin-left: 220px;  /* Quando o menu lateral está visível */
+        }
+
+        /* Notificação Completar Cadastro */
+        .completar-cadastro-notificacao {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;  /* Largura maior */
+            height: 50px;  /* Menor em altura */
+            background-color: rgba(243, 156, 18, 0.8); /* Cor laranja com transparência */
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            z-index: 1000;
+        }
+
+        .completar-cadastro-conteudo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .completar-cadastro-notificacao p {
+            font-size: 1rem;  /* Letra menor */
+            margin: 0;
+        }
+
+        .completar-cadastro-notificacao button {
+            background-color: #e74c3c;
+            border: none;
+            color: white;
+            padding: 5px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .completar-cadastro-notificacao button:hover {
+            background-color: #c0392b;
+        }
+
+        /* Navegação */
+        nav {
+            margin-bottom: 20px;
+        }
+
+        nav a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* Botões gerais */
+        button {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Botão para abrir/fechar o menu lateral -->
+<div id="menu-toggle" class="menu-toggle">
+    ☰
+</div>
+
+<!-- Menu lateral -->
+<nav id="menu">
+    <h2>Menu</h2>
+    <ul>
+        <li id="menu-ver-avisos">Ver Avisos</li>
+        <li>Consultar Pagamentos</li>
+        <li>Informações do Apartamento</li>
+    </ul>
+    <button id="btn-logout">Sair</button>
+</nav>
+
+<!-- Conteúdo principal -->
+<main id="conteudo">
+    <!-- Notificação Completar Cadastro -->
+    <div id="completar-cadastro-notificacao" class="completar-cadastro-notificacao">
+        <div class="completar-cadastro-conteudo">
+            <p>Olá! Complete seu cadastro para continuar.</p>
+        </div>
+    </div>
+
+    <section id="criar-aviso-container">
+        <!-- Formulário de criação de aviso para cargos permitidos -->
+    </section>
+
+</main> 
+
+<script src="js/script.js"></script>
+
+<script>
+    // --------------------- MENU LATERAL ---------------------
+    const menu = document.getElementById("menu");
+    const menuToggle = document.getElementById("menu-toggle");
+    const conteudo = document.getElementById("conteudo");
+
+    // Mostrar/Esconder o menu ao clicar no ícone de menu
+    menuToggle.addEventListener("click", function() {
+        menu.classList.toggle("open");
+        conteudo.classList.toggle("open");
+        menuToggle.classList.toggle("hidden");  // Esconde o ícone ao abrir o menu
+    });
+
+    // Fecha o menu se clicar fora dele
+    window.addEventListener("click", function(event) {
+        if (!menu.contains(event.target) && !menuToggle.contains(event.target)) {
+            menu.classList.remove("open");
+            conteudo.classList.remove("open");
+            menuToggle.classList.remove("hidden");  // Exibe o ícone novamente
+        }
+    });
+
+    // --------------------- NOTIFICAÇÃO "Completar Cadastro" ---------------------
+    const completarCadastroNotificacao = document.getElementById("completar-cadastro-notificacao");
+
+    // Exibe a notificação de "Completar Cadastro"
+    function mostrarNotificacaoCadastro() {
+        completarCadastroNotificacao.style.display = "block";
+    }
+
+    // Exibir a notificação ao carregar a página (ou após o login)
+    window.addEventListener("load", function() {
+        mostrarNotificacaoCadastro();
+    });
+
+    // Remover a notificação após o preenchimento dos dados
+    function fecharNotificacao() {
+        completarCadastroNotificacao.style.display = "none";
+    }
+
+    // Simular que os dados foram salvos e ocultar a notificação após o preenchimento
+    document.getElementById("form-completar-cadastro").onsubmit = function(event) {
+        event.preventDefault();
+
+        // Lógica para armazenar os dados (salvando no localStorage ou em outra parte do sistema)
+        // ...
+
+        // Remover a notificação após o preenchimento
+        fecharNotificacao();
+    };
+</script>
+
+</body>
+</html>
